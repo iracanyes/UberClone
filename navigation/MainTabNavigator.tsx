@@ -14,8 +14,10 @@ const MainTabNavigator = () => {
   return (
     <MainTab.Navigator
       initialRouteName={"Home"}
-      activeColor={Colors[colorScheme].text}
-      inactiveColor={Colors.dark.light}
+      activeColor={
+        colorScheme ? Colors[colorScheme].text : Colors.default.white.light
+      }
+      inactiveColor={Colors.default.white.light}
       shifting={true}
       barStyle={{
         backgroundColor: Colors.dark.background,
@@ -35,7 +37,7 @@ const MainTabNavigator = () => {
             />
           ),
           tabBarLabel: "Home",
-          tabBarColor: Colors.dark.primary,
+          tabBarColor: Colors.default.blue.dark,
         }}
       />
       <MainTab.Screen
@@ -50,7 +52,7 @@ const MainTabNavigator = () => {
               style={styles.bottomTabIcon}
             />
           ),
-          tabBarColor: Colors.dark.secondary,
+          tabBarColor: Colors.default.red.dark,
         }}
       />
     </MainTab.Navigator>

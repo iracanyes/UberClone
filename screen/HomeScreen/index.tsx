@@ -16,6 +16,7 @@ import {
   ReloadInstructions,
 } from "react-native/Libraries/NewAppScreen";
 import styles from "./styles";
+import {HomeMap, HomeSearch, MapNotification} from "../../component";
 
 const HomeScreen = () => {
   const isDarkMode = useColorScheme() === "dark";
@@ -29,15 +30,8 @@ const HomeScreen = () => {
       style={styles.container}
     >
       <ScrollView>
-        <View>
-          <Image
-            source={{ uri: "https://loremflickr.com/1200/960" }}
-            style={styles.map}
-          />
-        </View>
-        <View>
-          <Text>Hello World</Text>
-        </View>
+        <HomeMap />
+        <HomeSearch />
       </ScrollView>
     </SafeAreaView>
   );

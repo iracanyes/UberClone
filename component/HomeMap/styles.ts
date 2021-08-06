@@ -2,10 +2,13 @@ import { StyleSheet } from "react-native";
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    backgroundColor: "red",
-    paddingTop: 0,
-    marginTop: 0,
+    width: "100%",
+    height: 450,
+  },
+  map: {
+    width: "100%",
+    height: "100%",
+    zIndex: 1,
   },
 });
 
