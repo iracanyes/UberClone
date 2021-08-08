@@ -1,0 +1,77 @@
+type User @model {
+  id: ID!
+  username: String!
+  email: String!
+
+  orders: [Order] @connection(keyName: "byUser", fields: ["id"])
+  car: Car @connection(fields: ["id"])
+}
+
+type Car @model
+  @key(name: "byUser", fields: ["userId"]) {
+  id: ID!
+  type: String!
+  latitude: Float,
+  longitude: Float,
+  heading: Float,
+  isActive: Boolean
+
+  orders: [Order] @connection(keyName: "byCar", fields: ["id"])
+
+  userId: ID!
+  user: User @connection(fields: ["userId"])
+}
+
+type Order @model
+  @key(name: "byUser", fields: ["userId"])
+  @key(name: "byCar", fields: ["carId", "createdAt"]) {
+  id: ID!
+  createdAt: String!
+
+  type: String!
+  status: String,
+
+  originLatitude: Float!
+  oreiginLongitude: Float!
+
+  destLatitude: Float!
+  destLongitude: Float!
+
+  userId: ID!
+  user: User @connection(fields: ["userId"])
+
+  carId: ID!
+  car: Car @connection(fields: ["carId"])
+}
+
+################
+# Subscription
+#
+#type Subscription {
+#  onOrderUpdated(id: ID!): Order @aws_subscribe(mutations: ["updateOrder"])
+#  onCarUpdated(id: ID!): Car @aws_subscribe(mutations: ["updateCar"])
+#}
+################
+
+################
+# Sample Code
+#
+#type Task
+#  @model
+#  @auth(
+#    rules: [
+#      { allow: groups, groups: ["Managers"], queries: null, mutations: [create, update, delete] }
+#      { allow: groups, groups: ["Employees"], queries: [get, list], mutations: null }
+#    ]
+#  ) {
+#  id: ID!
+#  title: String!
+#  description: String
+#  status: String
+#}
+#type PrivateNote @model @auth(rules: [{ allow: owner }]) {
+#  id: ID!
+#  content: String!
+#}
+#
+################

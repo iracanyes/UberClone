@@ -7,8 +7,7 @@ module.exports = {
   tabWidth: 2,
   semi: true,
   semicolons: true,
-  endOfLine: "crlf",
-  parser: 'typescript',
+  endOfLine: "auto",
   printWidth: 70,
   proseWrap: "preserve"
 };
