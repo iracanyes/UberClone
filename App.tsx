@@ -19,7 +19,6 @@ import { Amplify } from "aws-amplify";
 import config from "./src/aws-exports";
 import Navigation from "./src/navigation";
 
-
 Amplify.configure(config);
 
 const App: () => React.ReactElement<any> = () => {
@@ -27,18 +26,21 @@ const App: () => React.ReactElement<any> = () => {
     <SafeAreaProvider
       initialMetrics={{
         frame: { x: 0, y: 0, width: 0, height: 0 },
-        insets: {top: 0, left: 0, right: 0, bottom: 0},
+        insets: { top: 0, left: 0, right: 0, bottom: 0 },
       }}
     >
-      <StatusBar
-        barStyle={
-          useColorScheme() === "dark"
-            ? "light-content"
-            : "dark-content"
-        }
-        backgroundColor={"transparent"}
-        translucent={true}
-      />
+      {/*
+        <StatusBar
+          barStyle={
+            useColorScheme() === "dark"
+              ? "light-content"
+              : "dark-content"
+          }
+          backgroundColor={"transparent"}
+          translucent={true}
+        />
+      */}
+
       <Navigation />
     </SafeAreaProvider>
   );

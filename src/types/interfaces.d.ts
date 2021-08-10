@@ -1,5 +1,11 @@
 import { CognitoUser } from "amazon-cognito-identity-js";
 
+export interface IUser {
+  id?: string;
+  username: string;
+  image?: string;
+}
+
 export interface ISection {
   title: string;
   children?: any;
@@ -14,4 +20,10 @@ export interface IConfirmSignUpRouteProps {
     userSub: string;
     email: string;
   };
+}
+
+export interface IDropdownPickerItems {
+  icon: any;
+  label: string;
+  value: string;
 }

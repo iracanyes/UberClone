@@ -7,23 +7,28 @@ import {
   ScrollView,
   FlatList,
   StatusBar,
+  TouchableOpacity,
 } from "react-native";
 import styles from "./styles";
 import Colors from "../../constants/Colors";
 import { Picker } from "@react-native-picker/picker";
+import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
+import { useNavigation } from "@react-navigation/native";
+import {PreviousDestination, SearchHeader, SearchInputs} from "../../components";
 
 const SearchScreen = () => {
+  const navigation = useNavigation();
+
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar
         backgroundColor={Colors.light.background}
-        barStyle={Colors.dark.background}
+        barStyle={"black"}
+        style={styles.statusBar}
       />
-      <View>
-      
-      </View>
-      <Text style={styles.title}>Search Screen</Text>
-      <TextInput />
+      <SearchHeader />
+      <SearchInputs />
+      <PreviousDestination />
     </SafeAreaView>
   );
 };

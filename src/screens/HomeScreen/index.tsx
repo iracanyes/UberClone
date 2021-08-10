@@ -6,7 +6,7 @@ import {
   ScrollView,
   useColorScheme,
   StyleSheet,
-  Image,
+  Image, StatusBar,
 } from "react-native";
 import {
   Colors,
@@ -16,7 +16,7 @@ import {
   ReloadInstructions,
 } from "react-native/Libraries/NewAppScreen";
 import styles from "./styles";
-import {HomeMap, HomeSearch, MapNotification} from "../../components";
+import {HomeMap, HomeSearch, MapNotification, PreviousDestination} from "../../components";
 
 const HomeScreen = () => {
   const isDarkMode = useColorScheme() === "dark";
@@ -29,9 +29,19 @@ const HomeScreen = () => {
       edges={["right", "bottom", "left"]}
       style={styles.container}
     >
+      <StatusBar
+        barStyle={
+          useColorScheme() === "dark"
+            ? "light-content"
+            : "dark-content"
+        }
+        backgroundColor={"transparent"}
+        translucent={true}
+      />
       <ScrollView>
         <HomeMap />
         <HomeSearch />
+        <PreviousDestination />
       </ScrollView>
     </SafeAreaView>
   );
