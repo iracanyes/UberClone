@@ -13,36 +13,22 @@ const styles = StyleSheet.create({
   },
   textInput: {
     width: "100%",
-    borderWidth: 2,
     paddingRight: 20,
     paddingLeft: 10,
+    backgroundColor: Colors.default.white.dark,
+    borderRadius: 5,
   },
   timerButton: {
     flexDirection: "row",
     position: "absolute",
-    top: 6,
+    top: 7,
     right: 10,
-    padding: 10,
-    borderRadius: 10,
-    backgroundColor: Colors.default.white.dark,
+    padding: 7,
+    borderRadius: 50,
+    backgroundColor: Colors.default.grey.light,
   },
   timerButtonText: {
     marginLeft: 5,
-  },
-  flatlistContainer: {
-    //marginTop: 10,
-  },
-  listItemBox: {
-    flexDirection: "row",
-    padding: 10,
-    borderRadius: 10,
-    backgroundColor: Colors.default.white.dark,
-    alignItems: "center",
-    marginVertical: 5,
-  },
-  listItemText: {
-    marginLeft: 10,
-    fontWeight: "bold",
   },
 });
 

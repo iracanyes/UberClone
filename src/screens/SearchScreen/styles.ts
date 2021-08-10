@@ -3,11 +3,9 @@ import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+    //paddingTop: 40,
   },
-  title: {
-    fontSize: 26,
-    fontWeight: "bold",
-  },
+  statusBar: {},
 });
 
 export default styles;

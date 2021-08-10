@@ -26,7 +26,9 @@
     "react": "17.0.1",
     "react-native": "0.64.2",
     "react-native-date-picker": "^3.3.2",
+    "react-native-dropdown-picker": "^5.1.23",
     "react-native-gesture-handler": "^1.10.3",
+    "react-native-google-places-autocomplete": "^2.4.0",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-paper": "^4.9.2",
     "react-native-reanimated": "^2.2.0",
@@ -40,6 +42,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.14.8",
+    "@babel/preset-typescript": "^7.15.0",
     "@babel/runtime": "^7.14.8",
     "@react-native-community/eslint-config": "^3.0.0",
     "@types/jest": "^26.0.24",

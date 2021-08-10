@@ -34,11 +34,12 @@ export default {
       light: "#ff4714",
     },
     grey: {
-      primary: "#444",
-      dark: "#222",
+      light: "#a9a9a9",
+      primary: "#737373",
+      dark: "#444",
     },
     white: {
-      primary: "#F3F3F3",
+      primary: "#f8f8f8",
       light: "#FFF",
       dark: "#f0f0f0",
     },
