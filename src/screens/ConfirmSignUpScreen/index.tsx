@@ -43,8 +43,6 @@ const ConfirmSignUpScreen = (): JSX.Element => {
           verificationCode,
         );
 
-        console.log("ConfirmSignUp res", res);
-
         navigation.navigate("Login");
       }
 

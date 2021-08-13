@@ -14,7 +14,11 @@ import Colors from "../../constants/Colors";
 import { Picker } from "@react-native-picker/picker";
 import FontAwesome5 from "react-native-vector-icons/FontAwesome5";
 import { useNavigation } from "@react-navigation/native";
-import {PreviousDestination, SearchHeader, SearchInputs} from "../../components";
+import {
+  PreviousDestination,
+  SearchHeader,
+  SearchInputs,
+} from "../../components";
 
 const SearchScreen = () => {
   const navigation = useNavigation();

@@ -6,6 +6,8 @@ import Colors from "../constants/Colors";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { StyleSheet, useColorScheme } from "react-native";
+import DrawerMenu from "./DrawerMenu";
+import SearchResultScreen from "../screens/SearchResultScreen";
 
 const MainTab = createMaterialBottomTabNavigator<MainTabParamList>();
 
@@ -15,7 +17,9 @@ const MainTabNavigator = () => {
     <MainTab.Navigator
       initialRouteName={"Home"}
       activeColor={
-        colorScheme ? Colors[colorScheme].text : Colors.default.white.light
+        colorScheme
+          ? Colors[colorScheme].text
+          : Colors.default.white.light
       }
       inactiveColor={Colors.default.white.light}
       shifting={true}
@@ -23,6 +27,9 @@ const MainTabNavigator = () => {
         backgroundColor: Colors.dark.background,
       }}
       labeled={true}
+      screenOptions={{
+        headerShown: false,
+      }}
     >
       <MainTab.Screen
         name={"Home"}

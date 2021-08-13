@@ -4,6 +4,7 @@ import PreviousDestination from "./PreviousDestination";
 import SearchHeader from "./SearchHeader";
 import SearchInputs from "./SearchInputs";
 import MapNotification from "./MapNotification";
+import SearchResultMap from "./SearchResultMap";
 
 export {
   HomeMap,
@@ -12,4 +13,5 @@ export {
   PreviousDestination,
   SearchHeader,
   SearchInputs,
+  SearchResultMap,
 };

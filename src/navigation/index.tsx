@@ -6,6 +6,8 @@ import {ConfirmSignUpScreen, LoginScreen, NotFoundScreen, SignUpScreen} from "..
 import {RootStackParamList} from "../types/types";
 import LinkingConfiguration from "./LinkingConfiguration";
 import RgpdScreen from '../screens/RgpdScreen';
+import DrawerMenu from "./DrawerMenu";
+import SearchResultScreen from "../screens/SearchResultScreen";
 
 const Navigation = () => {
   return (
@@ -31,7 +33,12 @@ const RootNavigator = () => {
       <Stack.Screen name={'Login'} component={LoginScreen} />
       <Stack.Screen name={"SignUp"} component={SignUpScreen} />
       <Stack.Screen name={"ConfirmSignUp"} component={ConfirmSignUpScreen} />
-      <Stack.Screen name={'Root'} component={MainTabNavigator}/>
+      <Stack.Screen name={'Root'} component={DrawerMenu}/>
+      <Stack.Screen
+        name={"SearchResult"}
+        component={SearchResultScreen}
+        options={{ headerShown: false }}
+      />
       <Stack.Screen name={"Rgpd"} component={RgpdScreen} />
       <Stack.Screen name={'NotFound'} component={NotFoundScreen} />
     </Stack.Navigator>

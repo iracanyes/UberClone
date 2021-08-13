@@ -39,11 +39,7 @@ const LoginScreen = (): JSX.Element => {
         const cognitoUser = await Auth.currentAuthenticatedUser({
           bypassCache: true,
         });
-
-        console.log(
-          "LoginScreen useEffect fetchAuthUser",
-          cognitoUser,
-        );
+        
         if (cognitoUser.attributes) {
           const authUser = await getUserDB(
             cognitoUser.attributes.sub,
@@ -73,8 +69,7 @@ const LoginScreen = (): JSX.Element => {
       const res = await API.graphql(
         graphqlOperation(getUser, { id: userID }),
       );
-
-      console.log("LoginScreen useEffect getUser ", res);
+      
 
       return res.data.getUser ? res.data.getUser : undefined;
     } catch (e) {
@@ -88,7 +83,8 @@ const LoginScreen = (): JSX.Element => {
         email.split("@")[0],
         password,
       );
-      console.log("button submit cognitoUser", cognitoUser);
+      
+
       if (cognitoUser.attributes) {
         const user = await getUserDB(cognitoUser.attributes.sub);
 

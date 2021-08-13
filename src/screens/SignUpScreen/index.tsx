@@ -43,10 +43,6 @@ const SignUpScreen = (): JSX.Element => {
           bypassCache: true,
         });
 
-        console.log(
-          "LoginScreen useEffect fetchAuthUser",
-          cognitoUser,
-        );
         if (cognitoUser.attributes) {
           const user = await getUserDB(cognitoUser.attributes.sub);
           if (user) {
@@ -75,7 +71,7 @@ const SignUpScreen = (): JSX.Element => {
         graphqlOperation(getUser, { id: userID }),
       );
 
-      console.log("LoginScreen useEffect getUser ", res);
+      
 
       return res.data.getUser ? res.data.getUser : undefined;
     } catch (e) {

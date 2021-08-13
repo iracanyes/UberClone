@@ -12,11 +12,23 @@ export default {
     screens: {
       Login: "login",
       SignUp: "sign_up",
+      confirmSignUp: "confirm_signup",
       Root: {
-        initialRouteName: "Home",
+        initialRouteName: "home",
         screens: {
-          Home: "home",
-          Search: "search",
+          Main: {
+            initialRouteName: "home",
+            screens: {
+              Home: "home",
+              Search: "search",
+            },
+          },
+          Messages: "messages",
+          MakeMoney: "make_money",
+          YourTrips: "your_trips",
+          Help: "help",
+          Wallet: "wallet",
+          Settings: "settings",
         },
       },
       Rgpd: "rgpd",

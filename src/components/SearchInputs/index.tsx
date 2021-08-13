@@ -6,22 +6,41 @@ import {
   destinationInputStyle,
   locationInputStyle,
 } from "./styles";
-import Colors from "../../constants/Colors";
-import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
-import Env from "../../constants/Env";
 import GooglePlacesInput from "../GooglePlacesInput";
+import { useNavigation } from "@react-navigation/native";
 
 const SearchInputs = () => {
-  const [location, setLocation] = useState("");
-  const [destination, setDestination] = useState("");
-  console.log(
-    "GOOGLE_MAPS_PLACE_API_KEY",
-    Env.dev.GOOGLE_MAPS_PLACE_API_KEY,
-  );
+  const navigation = useNavigation();
+  const [location, setLocation] = useState(null);
+  const [destination, setDestination] = useState(null);
 
   const showOptions = () => {
     console.log("show options pressed!");
   };
+
+  useEffect(() => {
+    if (location && destination) {
+      console.log(
+        "Location.data\n",
+        location.data,
+        "\nLocation.details\n",
+        location.details
+      );
+      console.log("\ndestination\n", destination);
+      console.log(
+        "\ndestination geometry\n",
+        destination.details.geometry,
+      );
+      try {
+        navigation.navigate("SearchResult", {
+          location,
+          destination,
+        });
+      } catch (e) {
+        console.warn(e);
+      }
+    }
+  }, [navigation, location, destination]);
 
   return (
     <View style={styles.container}>
@@ -34,15 +53,17 @@ const SearchInputs = () => {
         <View style={styles.locationInputWrapper}>
           <GooglePlacesInput
             placeholder={"Où etes-vous?"}
-            //autoFocus={true}
+            autoFocus={true}
+            setPlaceInfo={setLocation}
             styles={locationInputStyle}
           />
-          <View style={styles.locationRightContainer}/>
+          <View style={styles.locationRightContainer} />
         </View>
         <View style={styles.destinationInputWrapper}>
           <GooglePlacesInput
             placeholder={"Où allez-vous?"}
             styles={destinationInputStyle}
+            setPlaceInfo={setDestination}
           />
 
           <TouchableOpacity
