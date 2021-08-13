@@ -8,6 +8,9 @@ import {
 } from "./styles";
 import GooglePlacesInput from "../GooglePlacesInput";
 import { useNavigation } from "@react-navigation/native";
+import Colors from "../../constants/Colors";
+import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
+import Env from "../../constants/Env";
 
 const SearchInputs = () => {
   const navigation = useNavigation();
@@ -24,7 +27,7 @@ const SearchInputs = () => {
         "Location.data\n",
         location.data,
         "\nLocation.details\n",
-        location.details
+        location.details,
       );
       console.log("\ndestination\n", destination);
       console.log(

@@ -6,6 +6,7 @@ import SearchInputs from "./SearchInputs";
 import MapNotification from "./MapNotification";
 import SearchResultMap from "./SearchResultMap";
 
+
 export {
   HomeMap,
   HomeSearch,

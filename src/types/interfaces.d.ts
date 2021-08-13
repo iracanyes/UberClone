@@ -22,7 +22,25 @@ export interface ICar {
 }
 
 export interface IOrder {
+  id: string;
+  createdAt: string;
+  type: string;
+  status: string;
+  originLatitude: number;
+  originLongitude: number;
+  destLatitude: number;
+  destLongitude: number;
 
+  userId: string;
+  user: IUser;
+  carId: string;
+  car: ICar;
+}
+
+export interface IUser {
+  id?: string;
+  username: string;
+  image?: string;
 }
 
 export interface ISection {
@@ -52,7 +70,9 @@ interface IGooglePlacesInput {
   autoFocus?: boolean;
   fetchDetails?: boolean;
   styles?: any;
-  setPlaceInfo: Dispatch<SetStateAction<Record<string, unknown>>>;
+  setPlaceInfo: Dispatch<
+    SetStateAction<Record<string, unknown> | null>
+  >;
 }
 
 export interface IDrawerContent {
