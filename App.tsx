@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import * as React from "react";
+import React, { useEffect } from "react";
 import "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
 import {
@@ -14,6 +14,7 @@ import {
   StatusBar,
   StyleSheet,
   useColorScheme,
+  PermissionsAndroid,
 } from "react-native";
 import { Amplify } from "aws-amplify";
 import config from "./src/aws-exports";
@@ -22,6 +23,38 @@ import Navigation from "./src/navigation";
 Amplify.configure(config);
 
 const App: () => React.ReactElement<any> = () => {
+  const androidPermissions = async () => {
+    try{
+      const granted = await PermissionsAndroid.request(
+        PermissionsAndroid.PERMISSIONS.ACCESS_FINE_LOCATION,
+        {
+          title: "Permission d'accès à votre localisation précise",
+          message:
+            "Nous désirons accéder à votre localisation précise afin de vous proposer les Uber cars les plus proches.",
+          buttonNegative: "Demander ultérieurement",
+          buttonNeutral: "Annuler",
+          buttonPositive: "Ok",
+        },
+      );
+
+      if (granted === PermissionsAndroid.RESULTS.GRANTED) {
+        // Do smthg
+        console.log("Fine Geolocation enabled!");
+      } else {
+        // Close App
+        console.warn("Fine Geolocation denied!");
+      }
+    } catch (e) {
+      console.warn(
+        "\n\nPermissionsAndroid.request ACCESS_FINE_LOCATION\n",
+        e,
+      );
+    }
+  };
+
+  useEffect(() => {
+    androidPermissions();
+  }, []);
   return (
     <SafeAreaProvider
       initialMetrics={{

@@ -5,7 +5,7 @@ import SearchHeader from "./SearchHeader";
 import SearchInputs from "./SearchInputs";
 import MapNotification from "./MapNotification";
 import SearchResultMap from "./SearchResultMap";
-
+import PlaceRow from "./PlaceRow";
 
 export {
   HomeMap,
@@ -15,4 +15,5 @@ export {
   SearchHeader,
   SearchInputs,
   SearchResultMap,
+  PlaceRow,
 };

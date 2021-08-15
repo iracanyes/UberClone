@@ -65,7 +65,7 @@ export interface IDropdownPickerItems {
   value: string;
 }
 
-interface IGooglePlacesInput {
+export interface IGooglePlacesInput {
   placeholder: string;
   autoFocus?: boolean;
   fetchDetails?: boolean;
@@ -73,7 +73,14 @@ interface IGooglePlacesInput {
   setPlaceInfo: Dispatch<
     SetStateAction<Record<string, unknown> | null>
   >;
+  currentLocation: boolean;
+  currentLocationLabel: string;
 }
+
+export interface IPlaceRow {
+  data: any;
+  index: number;
+};
 
 export interface IDrawerContent {
   state: any;

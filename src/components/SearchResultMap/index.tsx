@@ -34,6 +34,37 @@ const SearchResultMap = (props: ISearchResultMap) => {
     },
   ];
 
+  // fetch Directions data for Polyline component
+  useEffect(() => {
+    const fetchInitialRoute = async () => {
+      const startLoc = `${location.details.geometry.location.lat}, ${location.details.geometry.location.lng}`;
+      const destLoc = `${destination.details.geometry.location.lat}, ${destination.details.geometry.location.lng}`;
+
+      try {
+        const res = await fetch(
+          `https://maps.googleapis.com/maps/api/directions/json?origin=${startLoc}&destination=${destLoc}&key=${Env.dev.GOOGLE_MAPS_PLACE_API_KEY}`
+        );
+        // get JSON from response
+        const resJson = await res.json();
+
+        console.log("Fetch Direction API res", res);
+        console.log("Fetch Direction API res.json", resJson);
+
+        /* Todo: Set all routes for the travel */
+        /* Todo: search for 3 waypoints */
+        // Infos: Waypoints limit = 100
+        // decode data
+      } catch (e) {
+        console.warn("\nDirection API Fetch error\n", e);
+      }
+    };
+
+    fetchInitialRoute();
+  }, [location, destination]);
+
+  // Todo:
+  
+
   return (
     <View>
       {location && destination && (
@@ -56,6 +87,9 @@ const SearchResultMap = (props: ISearchResultMap) => {
             strokeWidth={6}
             strokeColor={Colors.default.purple.light}
             strokeColors={[Colors.default.blue.primary]}
+            onReady={(result) =>
+              console.log("MapViewDirections ready result", result)
+            }
           />
           <Marker title={"Départ"} coordinate={coordinates[0]} />
           <Marker title="Arrivée" coordinate={coordinates[1]} />
@@ -69,6 +103,7 @@ const SearchResultMap = (props: ISearchResultMap) => {
                   latitude: item.latitude,
                   longitude: item.longitude,
                 }}
+                rotation={item.heading}
               >
                 <Image
                   source={getImage(item.type)}

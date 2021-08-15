@@ -8,26 +8,27 @@ import MapUberX from "../assets/images/top-UberX.png";
 import MapUberXL from "../assets/images/top-UberXL.png";
 import MapUberVan from "../assets/images/top-UberVan.png";
 import MapUberComfort from "../assets/images/top-Comfort.png";
-
+import { Image, StyleSheet } from "react-native";
 
 interface IUberImage {
   type: string;
+  style: any;
 }
 
 const UberImage = (props: IUberImage) => {
-  const { type = "" } = props;
+  const { type = "", style: customStyle } = props;
   const [image, setImage] = useState();
 
   useEffect(() => {
     if (type.length > 0) {
       switch (type) {
-        case "Uber X":
+        case "UberX":
           setImage(UberX);
           break;
-        case "Uber XL":
+        case "UberXL":
           setImage(UberXL);
           break;
-        case "Uber Van":
+        case "UberVan":
           setImage(UberVan);
           break;
         case "Comfort":
@@ -38,14 +39,19 @@ const UberImage = (props: IUberImage) => {
   }, [type]);
 
   return (
-    <Avatar.Image
+    <Image
       size={24}
       source={
         image ? image : { uri: "https://loremflickr.com/640/480/car" }
       }
+      style={[styles.default, customStyle]}
     />
   );
 };
+
+const styles = StyleSheet.create({
+  default: {},
+});
 
 export const getImage = (type: string) => {
   let result = null;

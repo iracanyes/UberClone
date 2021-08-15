@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { View, TextInput, TouchableOpacity } from "react-native";
+import { View, TextInput, TouchableOpacity, Platform } from "react-native";
 import Entypo from "react-native-vector-icons/Entypo";
 import {
   styles,
@@ -11,6 +11,9 @@ import { useNavigation } from "@react-navigation/native";
 import Colors from "../../constants/Colors";
 import { GooglePlacesAutocomplete } from "react-native-google-places-autocomplete";
 import Env from "../../constants/Env";
+import Geolocation from "@react-native-community/geolocation";
+import PlaceRow from "../PlaceRow";
+//navigator.geolocation = require("@react-native-community/geolocation");
 
 const SearchInputs = () => {
   const navigation = useNavigation();
@@ -48,7 +51,7 @@ const SearchInputs = () => {
   return (
     <View style={styles.container}>
       <View style={styles.leftContainer}>
-        <View style={styles.point} />
+        <View style={styles.circle} />
         <View style={styles.row} />
         <View style={styles.point} />
       </View>
@@ -58,7 +61,10 @@ const SearchInputs = () => {
             placeholder={"Où etes-vous?"}
             autoFocus={true}
             setPlaceInfo={setLocation}
+            currentLocation={true}
+            currentLocationLabel={"Actuelle localisation"}
             styles={locationInputStyle}
+            
           />
           <View style={styles.locationRightContainer} />
         </View>
