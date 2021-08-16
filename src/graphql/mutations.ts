@@ -18,7 +18,7 @@ export const createUser = /* GraphQL */ `
           type
           status
           originLatitude
-          oreiginLongitude
+          originLongitude
           destLatitude
           destLongitude
           userId
@@ -47,6 +47,17 @@ export const createUser = /* GraphQL */ `
         }
         createdAt
         updatedAt
+      }
+      userPlaces {
+        items {
+          id
+          description
+          userID
+          placeID
+          createdAt
+          updatedAt
+        }
+        nextToken
       }
       createdAt
       updatedAt
@@ -69,7 +80,7 @@ export const updateUser = /* GraphQL */ `
           type
           status
           originLatitude
-          oreiginLongitude
+          originLongitude
           destLatitude
           destLongitude
           userId
@@ -98,6 +109,17 @@ export const updateUser = /* GraphQL */ `
         }
         createdAt
         updatedAt
+      }
+      userPlaces {
+        items {
+          id
+          description
+          userID
+          placeID
+          createdAt
+          updatedAt
+        }
+        nextToken
       }
       createdAt
       updatedAt
@@ -120,7 +142,7 @@ export const deleteUser = /* GraphQL */ `
           type
           status
           originLatitude
-          oreiginLongitude
+          originLongitude
           destLatitude
           destLongitude
           userId
@@ -149,6 +171,17 @@ export const deleteUser = /* GraphQL */ `
         }
         createdAt
         updatedAt
+      }
+      userPlaces {
+        items {
+          id
+          description
+          userID
+          placeID
+          createdAt
+          updatedAt
+        }
+        nextToken
       }
       createdAt
       updatedAt
@@ -174,7 +207,7 @@ export const createCar = /* GraphQL */ `
           type
           status
           originLatitude
-          oreiginLongitude
+          originLongitude
           destLatitude
           destLongitude
           userId
@@ -201,6 +234,9 @@ export const createCar = /* GraphQL */ `
           userId
           createdAt
           updatedAt
+        }
+        userPlaces {
+          nextToken
         }
         createdAt
         updatedAt
@@ -229,7 +265,7 @@ export const updateCar = /* GraphQL */ `
           type
           status
           originLatitude
-          oreiginLongitude
+          originLongitude
           destLatitude
           destLongitude
           userId
@@ -256,6 +292,9 @@ export const updateCar = /* GraphQL */ `
           userId
           createdAt
           updatedAt
+        }
+        userPlaces {
+          nextToken
         }
         createdAt
         updatedAt
@@ -284,7 +323,7 @@ export const deleteCar = /* GraphQL */ `
           type
           status
           originLatitude
-          oreiginLongitude
+          originLongitude
           destLatitude
           destLongitude
           userId
@@ -312,6 +351,9 @@ export const deleteCar = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        userPlaces {
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -331,7 +373,7 @@ export const createOrder = /* GraphQL */ `
       type
       status
       originLatitude
-      oreiginLongitude
+      originLongitude
       destLatitude
       destLongitude
       userId
@@ -352,6 +394,9 @@ export const createOrder = /* GraphQL */ `
           userId
           createdAt
           updatedAt
+        }
+        userPlaces {
+          nextToken
         }
         createdAt
         updatedAt
@@ -393,7 +438,7 @@ export const updateOrder = /* GraphQL */ `
       type
       status
       originLatitude
-      oreiginLongitude
+      originLongitude
       destLatitude
       destLongitude
       userId
@@ -414,6 +459,9 @@ export const updateOrder = /* GraphQL */ `
           userId
           createdAt
           updatedAt
+        }
+        userPlaces {
+          nextToken
         }
         createdAt
         updatedAt
@@ -455,7 +503,7 @@ export const deleteOrder = /* GraphQL */ `
       type
       status
       originLatitude
-      oreiginLongitude
+      originLongitude
       destLatitude
       destLongitude
       userId
@@ -476,6 +524,9 @@ export const deleteOrder = /* GraphQL */ `
           userId
           createdAt
           updatedAt
+        }
+        userPlaces {
+          nextToken
         }
         createdAt
         updatedAt
@@ -502,6 +553,228 @@ export const deleteOrder = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      updatedAt
+    }
+  }
+`;
+export const createPlace = /* GraphQL */ `
+  mutation CreatePlace(
+    $input: CreatePlaceInput!
+    $condition: ModelPlaceConditionInput
+  ) {
+    createPlace(input: $input, condition: $condition) {
+      id
+      latitude
+      longitude
+      usersPlace {
+        items {
+          id
+          description
+          userID
+          placeID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updatePlace = /* GraphQL */ `
+  mutation UpdatePlace(
+    $input: UpdatePlaceInput!
+    $condition: ModelPlaceConditionInput
+  ) {
+    updatePlace(input: $input, condition: $condition) {
+      id
+      latitude
+      longitude
+      usersPlace {
+        items {
+          id
+          description
+          userID
+          placeID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deletePlace = /* GraphQL */ `
+  mutation DeletePlace(
+    $input: DeletePlaceInput!
+    $condition: ModelPlaceConditionInput
+  ) {
+    deletePlace(input: $input, condition: $condition) {
+      id
+      latitude
+      longitude
+      usersPlace {
+        items {
+          id
+          description
+          userID
+          placeID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createUserPlace = /* GraphQL */ `
+  mutation CreateUserPlace(
+    $input: CreateUserPlaceInput!
+    $condition: ModelUserPlaceConditionInput
+  ) {
+    createUserPlace(input: $input, condition: $condition) {
+      id
+      description
+      userID
+      user {
+        id
+        username
+        email
+        orders {
+          nextToken
+        }
+        car {
+          id
+          type
+          latitude
+          longitude
+          heading
+          isActive
+          userId
+          createdAt
+          updatedAt
+        }
+        userPlaces {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      placeID
+      place {
+        id
+        latitude
+        longitude
+        usersPlace {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateUserPlace = /* GraphQL */ `
+  mutation UpdateUserPlace(
+    $input: UpdateUserPlaceInput!
+    $condition: ModelUserPlaceConditionInput
+  ) {
+    updateUserPlace(input: $input, condition: $condition) {
+      id
+      description
+      userID
+      user {
+        id
+        username
+        email
+        orders {
+          nextToken
+        }
+        car {
+          id
+          type
+          latitude
+          longitude
+          heading
+          isActive
+          userId
+          createdAt
+          updatedAt
+        }
+        userPlaces {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      placeID
+      place {
+        id
+        latitude
+        longitude
+        usersPlace {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteUserPlace = /* GraphQL */ `
+  mutation DeleteUserPlace(
+    $input: DeleteUserPlaceInput!
+    $condition: ModelUserPlaceConditionInput
+  ) {
+    deleteUserPlace(input: $input, condition: $condition) {
+      id
+      description
+      userID
+      user {
+        id
+        username
+        email
+        orders {
+          nextToken
+        }
+        car {
+          id
+          type
+          latitude
+          longitude
+          heading
+          isActive
+          userId
+          createdAt
+          updatedAt
+        }
+        userPlaces {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      placeID
+      place {
+        id
+        latitude
+        longitude
+        usersPlace {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
       updatedAt
     }
   }

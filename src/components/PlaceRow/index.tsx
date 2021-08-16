@@ -16,7 +16,7 @@ const PlaceRow = (props: IPlaceRow) => {
     <View style={styles.container}>
       <Entypo
         name={"pin"}
-        size={32}
+        size={22}
         color={"black"}
         style={styles.icon}
       />

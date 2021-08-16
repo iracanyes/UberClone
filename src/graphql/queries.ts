@@ -15,7 +15,7 @@ export const getUser = /* GraphQL */ `
           type
           status
           originLatitude
-          oreiginLongitude
+          originLongitude
           destLatitude
           destLongitude
           userId
@@ -44,6 +44,17 @@ export const getUser = /* GraphQL */ `
         }
         createdAt
         updatedAt
+      }
+      userPlaces {
+        items {
+          id
+          description
+          userID
+          placeID
+          createdAt
+          updatedAt
+        }
+        nextToken
       }
       createdAt
       updatedAt
@@ -75,6 +86,9 @@ export const listUsers = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        userPlaces {
+          nextToken
+        }
         createdAt
         updatedAt
       }
@@ -98,7 +112,7 @@ export const getCar = /* GraphQL */ `
           type
           status
           originLatitude
-          oreiginLongitude
+          originLongitude
           destLatitude
           destLongitude
           userId
@@ -125,6 +139,9 @@ export const getCar = /* GraphQL */ `
           userId
           createdAt
           updatedAt
+        }
+        userPlaces {
+          nextToken
         }
         createdAt
         updatedAt
@@ -174,7 +191,7 @@ export const getOrder = /* GraphQL */ `
       type
       status
       originLatitude
-      oreiginLongitude
+      originLongitude
       destLatitude
       destLongitude
       userId
@@ -195,6 +212,9 @@ export const getOrder = /* GraphQL */ `
           userId
           createdAt
           updatedAt
+        }
+        userPlaces {
+          nextToken
         }
         createdAt
         updatedAt
@@ -238,7 +258,7 @@ export const listOrders = /* GraphQL */ `
         type
         status
         originLatitude
-        oreiginLongitude
+        originLongitude
         destLatitude
         destLongitude
         userId
@@ -261,6 +281,128 @@ export const listOrders = /* GraphQL */ `
           createdAt
           updatedAt
         }
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getPlace = /* GraphQL */ `
+  query GetPlace($id: ID!) {
+    getPlace(id: $id) {
+      id
+      latitude
+      longitude
+      usersPlace {
+        items {
+          id
+          description
+          userID
+          placeID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listPlaces = /* GraphQL */ `
+  query ListPlaces(
+    $filter: ModelPlaceFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listPlaces(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        latitude
+        longitude
+        usersPlace {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getUserPlace = /* GraphQL */ `
+  query GetUserPlace($id: ID!) {
+    getUserPlace(id: $id) {
+      id
+      description
+      userID
+      user {
+        id
+        username
+        email
+        orders {
+          nextToken
+        }
+        car {
+          id
+          type
+          latitude
+          longitude
+          heading
+          isActive
+          userId
+          createdAt
+          updatedAt
+        }
+        userPlaces {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      placeID
+      place {
+        id
+        latitude
+        longitude
+        usersPlace {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listUserPlaces = /* GraphQL */ `
+  query ListUserPlaces(
+    $filter: ModelUserPlaceFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listUserPlaces(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        description
+        userID
+        user {
+          id
+          username
+          email
+          createdAt
+          updatedAt
+        }
+        placeID
+        place {
+          id
+          latitude
+          longitude
+          createdAt
+          updatedAt
+        }
+        createdAt
         updatedAt
       }
       nextToken

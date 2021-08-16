@@ -57,13 +57,15 @@ const GooglePlacesInput = (props: IGooglePlacesInput) => {
       autoFocus={autoFocus}
       autoFillOnNotFound={true}
       fetchDetails={true}
+      predefinedPlacesAlwaysVisible={true}
+      //predefinedPlaces={["home", "work"]}
       onPress={(data, details = null) => {
         // 'details' is provided when fetchDetails = true
         console.log("\nGooglePlacesAutocomplete onPress\n data\n", data, "\nLocation\n", details);
         setPlaceInfo !== null && setPlaceInfo({ data, details });
       }}
       currentLocation={currentLocation ? currentLocation : false}
-      currentLocationLabel={"Localisation actuelle"}
+      currentLocationLabel={"Position actuelle"}
       enableHighAccuracyLocation={currentLocation ? true : false}
       query={{
         key: Env.dev.GOOGLE_MAPS_PLACE_API_KEY,

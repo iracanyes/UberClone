@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+import Colors from "../../constants/Colors";
 
 const styles = StyleSheet.create({
   container: {
@@ -11,10 +12,13 @@ const styles = StyleSheet.create({
     width: 250,
   },
   icon: {
+    padding: 10,
+    borderRadius: 50,
+    backgroundColor: Colors.default.grey.light,
     marginRight: 10,
   },
   caption: {
-    width: 250,
+    width: 300,
   },
 });
 

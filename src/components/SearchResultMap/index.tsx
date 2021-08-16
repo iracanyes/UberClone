@@ -79,6 +79,7 @@ const SearchResultMap = (props: ISearchResultMap) => {
           zoomEnabled={true}
           zoomControlEnabled={true}
           style={styles.map}
+          showsUserLocation={true}
         >
           <MapViewDirections
             apikey={Env.dev.GOOGLE_MAPS_PLACE_API_KEY}

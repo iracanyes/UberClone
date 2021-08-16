@@ -5,6 +5,7 @@ type User @model {
 
   orders: [Order] @connection(keyName: "byUser", fields: ["id"])
   car: Car @connection(fields: ["id"])
+  userPlaces: [UserPlace] @connection(keyName: "byUser", fields: ["id"])
 }
 
 type Car @model
@@ -42,6 +43,32 @@ type Order @model
 
   carId: ID!
   car: Car @connection(fields: ["carId"])
+}
+
+type Place
+@model
+{
+  id: ID!
+  latitude: Float!
+  longitude: Float!
+
+  usersPlace: [UserPlace] @connection(keyName: "byPlace", fields: ["id"])
+}
+
+type UserPlace
+@model
+@key(name: "byUser", fields: ["userID","placeID"])
+@key(name: "byPlace", fields: ["placeID","userID"])
+{
+  id: ID!
+
+  description: String!
+
+  userID: ID!
+  user: User @connection(fields: ["userID"])
+
+  placeID: ID!
+  place: Place @connection(fields: ["placeID"])
 }
 
 ################
