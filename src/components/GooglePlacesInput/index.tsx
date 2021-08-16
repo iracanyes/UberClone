@@ -72,9 +72,11 @@ const GooglePlacesInput = (props: IGooglePlacesInput) => {
       styles={styles !== null ? styles : undefined}
       onFail={(data) => console.warn("Google Place API error", data)}
       suppressDefaultStyles={true}
+      //isRowScrollable={true}
       renderRow={(data: any, index: number) => (
         <PlaceRow data={data} index={index} />
       )}
+      listViewDisplayed={"auto"}
     />
   );
 };

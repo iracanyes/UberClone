@@ -3,15 +3,22 @@ import Colors from "../../constants/Colors";
 
 const styles = StyleSheet.create({
   container: {
-    flexDirection: "row",
+    flex: 1,
     padding: 5,
     backgroundColor: Colors.default.white.light,
+  },
+  inlineWrapper: {
+    height: "100%",
+    flexDirection: "row",
   },
   leftContainer: {
     width: 40,
     flexDirection: "column",
     justifyContent: "center",
     alignItems: "center",
+    position: "absolute",
+    top: 25,
+    left: 0,
   },
   circle: {
     //width: 5,
@@ -35,6 +42,7 @@ const styles = StyleSheet.create({
 
   textInputWrapper: {
     flex: 1,
+    marginLeft: 40,
   },
   locationInputWrapper: {
     flexDirection: "row",
@@ -46,21 +54,19 @@ const styles = StyleSheet.create({
   },
   destinationInputWrapper: {
     flexDirection: "row",
-    //
   },
   buttonPlus: {
     width: 50,
     height: 50,
     justifyContent: "center",
     alignItems: "center",
-    //backgroundColor: "red",
   },
   iconPlus: {},
 });
 
 const locationInputStyle = StyleSheet.create({
   container: {
-    flex: 1,
+    flex: 0,
   },
   textInputContainer: {
     width: 300,
@@ -73,13 +79,13 @@ const locationInputStyle = StyleSheet.create({
     marginBottom: 10,
   },
   listView: {
-    //flex: 1,
     width: Dimensions.get("window").width,
     position: "absolute",
     top: 125,
     left: -50,
     backgroundColor: Colors.default.white.light,
     paddingHorizontal: 10,
+    padding: 10,
   },
   row: {
     backgroundColor: Colors.default.white.light,
@@ -98,6 +104,7 @@ const locationInputStyle = StyleSheet.create({
 const destinationInputStyle = StyleSheet.create({
   textInputContainer: {
     width: 300,
+    overflow: "visible",
   },
   textInput: {
     backgroundColor: Colors.default.white.dark,
@@ -105,6 +112,21 @@ const destinationInputStyle = StyleSheet.create({
     borderRadius: 10,
     paddingHorizontal: 10,
     marginBottom: 10,
+  },
+  listView: {
+    width: Dimensions.get("window").width,
+    position: "absolute",
+    top: 50,
+    left: -50,
+    backgroundColor: Colors.default.white.light,
+    paddingHorizontal: 10,
+  },
+  row: {
+    backgroundColor: Colors.default.white.light,
+    padding: 13,
+    //height: 44,
+    flexDirection: "row",
+    marginBottom: 5,
   },
 });
 

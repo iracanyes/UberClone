@@ -1,5 +1,5 @@
 import React, { useRef, useState, useEffect } from "react";
-import { View, TextInput, TouchableOpacity, Platform } from "react-native";
+import {View, TextInput, TouchableOpacity, Platform, ScrollView} from "react-native";
 import Entypo from "react-native-vector-icons/Entypo";
 import {
   styles,
@@ -17,15 +17,15 @@ import PlaceRow from "../PlaceRow";
 
 const SearchInputs = () => {
   const navigation = useNavigation();
-  const [location, setLocation] = useState(null);
-  const [destination, setDestination] = useState(null);
+  const [location, setLocation] = useState({});
+  const [destination, setDestination] = useState({});
 
   const showOptions = () => {
     console.log("show options pressed!");
   };
 
   useEffect(() => {
-    if (location && destination) {
+    if ("data" in location && "data" in destination) {
       console.log(
         "Location.data\n",
         location.data,
@@ -50,37 +50,42 @@ const SearchInputs = () => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.leftContainer}>
-        <View style={styles.circle} />
-        <View style={styles.row} />
-        <View style={styles.point} />
-      </View>
-      <View style={styles.textInputWrapper}>
-        <View style={styles.locationInputWrapper}>
-          <GooglePlacesInput
-            placeholder={"Où etes-vous?"}
-            autoFocus={true}
-            setPlaceInfo={setLocation}
-            currentLocation={true}
-            currentLocationLabel={"Actuelle localisation"}
-            styles={locationInputStyle}
-            
-          />
-          <View style={styles.locationRightContainer} />
+      <View style={styles.inlineWrapper}>
+        <View style={styles.leftContainer}>
+          <View style={styles.circle} />
+          <View style={styles.row} />
+          <View style={styles.point} />
         </View>
-        <View style={styles.destinationInputWrapper}>
-          <GooglePlacesInput
-            placeholder={"Où allez-vous?"}
-            styles={destinationInputStyle}
-            setPlaceInfo={setDestination}
-          />
+        <View style={styles.textInputWrapper}>
+          <View style={styles.locationInputWrapper}>
+            <GooglePlacesInput
+              placeholder={"Où etes-vous?"}
+              autoFocus={true}
+              setPlaceInfo={setLocation}
+              currentLocation={true}
+              currentLocationLabel={"Position actuelle"}
+              styles={locationInputStyle}
+            />
+            <View style={styles.locationRightContainer} />
+          </View>
+          <View style={styles.destinationInputWrapper}>
+            <GooglePlacesInput
+              placeholder={"Où allez-vous?"}
+              styles={destinationInputStyle}
+              setPlaceInfo={setDestination}
+            />
 
-          <TouchableOpacity
-            onPress={() => showOptions()}
-            style={styles.buttonPlus}
-          >
-            <Entypo name={"plus"} size={34} style={styles.iconPlus} />
-          </TouchableOpacity>
+            <TouchableOpacity
+              onPress={() => showOptions()}
+              style={styles.buttonPlus}
+            >
+              <Entypo
+                name={"plus"}
+                size={34}
+                style={styles.iconPlus}
+              />
+            </TouchableOpacity>
+          </View>
         </View>
       </View>
     </View>
